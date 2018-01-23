@@ -32,6 +32,17 @@ pipeline {
                 ])
                 }
           }
+         stage("notification") {
+             steps {
+                 post {
+                    always {
+                        mail to: 'cycloneqi@126.com',
+                        subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
+                        body: "Your build completed, please check: ${env.BUILD_URL}"
+                    }
+                }
+             }
+         }
 
      }
 }
