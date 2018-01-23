@@ -1,4 +1,3 @@
-apply plugin: "jacoco"
 
 buildscript {
 	ext {
@@ -15,6 +14,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: "jacoco"
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -28,4 +28,14 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+jacocoTestCoverageVerification {
+     violationRules {
+          rule {
+               limit {
+                    minimum = 0.2
+               }
+          }
+     }
 }
